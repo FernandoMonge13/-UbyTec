@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="col-1"> </div>
+    <div class="col">
+        <div class="row my-4">
+            <h1>Productos de COMERCIO</h1></div>
+        <div *ngFor="let n of lista; let i=index">
+            <div *ngIf="crearFila(i)">
+                <div class="row mt-4">
+                    <ng-template ngFor let-objeto [ngForOf] = "subLista(i)">
+                        <div class="col">
+                            <div class="container gy-1">
+                                <div class="row m t-1"><h2>{{objeto.nombre}}</h2></div>
+                                <div class="row m t-1"><span>₡{{objeto.precio}}</span> </div>
+                                <button type="submit" (click) = "onSelectProducto(objeto)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto"> Añadir </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template ngFor let-empleado [ngForOf] = "completar(i)">
+                    <div class="col">
+                        <div class="container gy-1" style="visibility: hidden;">
+                        </div>
+                    </div>
+                </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3 ">
+        <div class="container2">
+            <div class="row">
+                <div class="col" style="margin-left: 4%; margin-top: 5%; margin-bottom: 5%;">
+                    <h2>Carrito de compras</h2>
+                    <ng-template ngFor let-producto let-i="index" [ngForOf] = "productos" >
+                        <div class="col mb-4">
+                            <div class="container3 left">
+                                <div class="row" style="margin-left: 4%;">
+                                    <div class="col">
+                                        <div class="row">Articulo: {{i+1}}</div>
+                                        <div class="row">Nombre: {{producto.producto}}</div>
+                                        <div class="row">
+                                            <div class="col">Cantidad: </div>
+                                            <div class="col"><input class = "text-cente" type = "number" min = 0 style="width: 40%;" [(ngModel)] = producto.cantidad></div>
+                                        </div>
+                                        <div class="row">Total: {{producto.cantidad * producto.precio}}</div>
+                                    </div>
+                                    <div class="col-3"><button type="button"(click) = onDeleteProducto(producto) style="height: 97%; margin-bottom: 5%;" class="btn btn-outline-primary"> D </button></div>
+                        
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+            <div *ngIf = "productos.length != 0" class="row" style="margin-left: 4%;">
+                <h2>Total: {{getTotal()}}</h2>
+                <button class="btn btn-primary" [disabled]="loading" (click) = onSolicitarPedido() style= "width: 70%" >
+                    {{(loading) ? 'Cargando...' : 'Pagar'}}</button>
+            </div>
+        </div>
+         </div>
+</div>
+
+<div class="modal fade" id="agregarProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Información de Producto</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mx-3">
+            <div class="container my-4">
+                <div *ngIf="!downloading; else wait" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-inner">
+                        <div *ngFor="let foto of listaFotos; let i=index">
+                            <div class="carousel-item active">
+                                <img [src]="foto.fotoData" class="d-block w-100" alt="...">
+                              </div>
+                          </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                <ng-template #wait>
+                  <h3>Cargando imágenes...</h3>
+                </ng-template>
+                <div class="mb-3">
+                    <h2 class="text-center">{{temporal.producto}}</h2>
+                    <div class="row my-3">
+                        <div class="col-5">
+                            <div class="row mt-4 right"><label for = "nombre" class="form-label">Precio</label></div>
+                            <div class="row mt-4 right"><label for = "nombre" class="form-label">Cantidad</label></div>
+                            <div class="row mt-4 right"><label for = "nombre" class="form-label">Total</label></div> </div>
+                        <div class="col">
+                            <div class="row mt-4 right"><label for = "nombre" class="form-label">{{temporal.precio}}</label></div>
+                            <div class="row mt-4" style="margin-left: 30%;"><input min = 1 max= 10 style="width: 50%" type = "number" class="form-control" name = "cantidad" [(ngModel)] = "temporal.cantidad"></div>
+                            <div class="row mt-4 right"><label for = "nombre" class="form-label">{{temporal.precio * temporal.cantidad}}</label></div>
+                        </div>
+                    </div>
+                    <div class="row"  *ngIf="productoFoto.fotoData">
+                        <div class="carousel-item active">
+                          <img [src]="productoFoto.fotoData" class="d-block w-100" >
+                        </div></div>
+                  <div class="row mt-4"><button class="btn btn-primary" (click) = onAddProducto() style= "width: 100%" data-bs-dismiss="modal" >Agregar al Carrito</button></div>
+                  
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>

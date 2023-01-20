@@ -1,0 +1,50 @@
+.col{
+    /*border: solid 2px #000;*/
+    align-items: center;
+    text-align: center;
+}
+
+.btn{
+    /*border-radius: 0%;*/
+    background-color: black;
+    border: 2px solid black;
+    color: #FFFFFF;
+    width: 50%;
+    height: 100%;
+    border-radius: 0PX;
+}
+
+
+.btn:hover{
+    background-color: #FFFFFF;
+    color: black;
+    border: 2px solid black;
+}
+
+.form-control{
+    border-radius: 0%;
+}
+
+.col-4{
+    background: #FFFFFF;
+    box-shadow: 10px 10px 10px #000000b9;
+}
+
+.prueba{
+    background: #FFFFFF;
+    box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.2);
+    border: solid 4px red;
+}
+
+.btn2{
+    /*border-radius: 0%;*/
+    background-color: black;
+    border: 2px solid black;
+    color: #FFFFFF;
+    height: 100%;
+    border-radius: 0PX;
+}
+
+.form-label{
+    border: 2px solid #FFFFFF;
+}

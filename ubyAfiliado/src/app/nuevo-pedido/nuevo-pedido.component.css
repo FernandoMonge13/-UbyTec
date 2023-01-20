@@ -1,0 +1,29 @@
+.container{
+    text-align: center;
+    background-color: white;
+    width: 90%;
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+    padding-top: 10%;
+    padding-bottom: 10%;
+    height: 100%;
+  }
+  .form-label{
+    margin-top: 7px
+}
+
+  .btn{
+    /*border-radius: 0%;*/
+    background-color: black;
+    border: 2px solid black;
+    color: #FFFFFF;
+    border-radius: 0PX;
+    margin-top: 2%;
+  }
+  
+  
+  .btn:hover{
+    background-color: #FFFFFF;
+    color: black;
+    border: 2px solid black;
+  }
+  

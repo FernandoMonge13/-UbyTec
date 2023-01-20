@@ -1,0 +1,23 @@
+<div class="container sombra" *ngIf="logged">
+  <ul class="nav flex-column " >
+
+      <li class="nav-item">
+          <a class = "tab"  routerLink="/gestion/empleado" routerLinkActive="tab-active" (click)="recargar('empleado')">Empleados</a>
+      </li>
+      <li class="nav-item">
+          <a class = "tab"  routerLink="/gestion/afiliados" routerLinkActive="tab-active" (click)="recargar('afiliados')">Afiliados</a>
+      </li>
+      <li class="nav-item">
+          <a class = "tab"  routerLink="/gestion/repartidores" routerLinkActive="tab-active" (click)="recargar('repartidores')">Repartidores</a>
+      </li>
+      <li class="nav-item">
+        <a class = "tab"  routerLink="/gestion/solicitudes" routerLinkActive="tab-active" (click)="recargar('solicitudes')">Solicitudes</a>
+      </li>
+      <li class="nav-item">
+          <a class = "tab"  routerLink="/reportes" routerLinkActive="tab-active">Reportes</a>
+      </li>
+      <li class="nav-item">
+        <a class = "tab"  (click)="logout()" >Log Out</a>
+      </li>
+    </ul>
+  </div>

@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-1"> </div>
+  <div class="col">
+    <div *ngFor="let n of lista; let i=index">
+      <div *ngIf="crearFila(i)">
+          <div class="row mt-4">
+              <ng-template ngFor let-objeto [ngForOf] = "subLista(i)">
+                  <div class="col">
+                      <div class="container  gy-1">
+                          Pedido de
+                          <div class="row m t-1"><h2>{{objeto.nombre}}</h2></div>
+                          <div class="row"> <h5>Orden: {{objeto.id}}</h5></div>
+                          <button type="submit" [routerLink]="['',id,'verificar-pedido',objeto.id]" class="btn btn-outline-primary"> EDITAR </button>
+                      </div>
+                  </div>
+              </ng-template>
+              <ng-template ngFor let-empleado [ngForOf] = "completar(i)">
+                <div class="col">
+                    <div class="container gy-1" style="visibility: hidden;">
+                    </div>
+                </div>
+            </ng-template>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="col-1"> </div>
+</div>

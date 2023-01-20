@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row my-3">
+      
+      <div class="col-3">
+      </div>
+      <div class="col"> 
+        <div class="row my-3">  
+          <h2 class = "fw-bold offset-md-1">Información de Cliente</h2>
+        </div>
+        <form #form="ngForm" (ngSubmit)="onGuardar()">
+            <div class="row">
+  
+              <div class="col text-center">
+                <div class="row mt-4 right"><label for = "idPedido" class="form-label">ID Pedido</label></div>
+                <div class="row mt-4 right"><label for = "direccion" class="form-label">Dirección</label></div>
+                <div class="row mt-4 right"><label for = "finalizado" class="form-label">Finalizado</label></div>
+                <div class="row mt-4 right"><label for = "repartidor" class="form-label">Repartidor</label></div>
+                <div class="row mt-4 right"><label for = "idCliente" class="form-label">ID Cliente</label></div>
+              </div>
+              <div class="col">  
+                <div class="row mt-4"><input type = "text" class="form-control" name = "idPedido" [(ngModel)] = "pedido.idPedido"></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "direccion" [(ngModel)] = "pedido.direccion"></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "finalizado" [(ngModel)] = "pedido.finalizado"></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "repartidor" [(ngModel)] = "pedido.repartidor"></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "idCliente" [(ngModel)] = "pedido.idCliente"></div>
+              </div>
+              <div class="col-1"></div>          
+            </div>
+            <div *ngIf="editMode; else newMode">
+              <div class="row my-5">
+                <div class="col"></div>
+                
+                <div class="col text-center offset-md-1"> <button type="submit" class="btn btn-outline-primary"> Actualizar </button> </div>
+                <div class="col text-center"> <a role="button" type="button" (click) = onEliminar() class="btn can btn-primary"> Eliminar </a></div>
+                <div class="col text-center"> <a role="button" type="button" (click) = onCancelar() class="btn can btn-primary"> Cancelar </a></div>
+                <div class="col"></div>
+              </div>                                                                      
+            </div>
+            
+            <ng-template #newMode>
+              <div class="row my-5">
+                <div class="col"></div>
+                <div class="col text-center offset-md-1"> <button type="submit" class="btn btn-outline-primary"> Añadir </button> </div>
+                <div class="col text-center"> <a role="button" type="button" (click) = onCancelar() class="btn can btn-primary"> Cancelar </a></div>
+                <div class="col"></div>
+              </div>
+            </ng-template>
+          </form>
+      </div>
+      <div class="col-3">
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="modal fade" id="editarTelefonos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Teléfonos de Usuario</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-1"> </div>
+    <div class="col">
+        <div class="row my-4">
+            <h1>Comercios Cercanos a ti</h1></div>
+      <div *ngFor="let n of lista; let i=index">
+        <div *ngIf="crearFila(i)">
+            <div class="row mt-4">
+                <ng-template ngFor let-objeto [ngForOf] = "subLista(i)">
+                    <div class="col">
+                        <div class="container gy-1">
+                            {{objeto.tipo}}
+                            <div class="row m t-1"><h2>{{objeto.nombre}}</h2></div>
+                            <button type="submit" [routerLink]="['',id,'comprar',objeto.idComercio]" class="btn btn-outline-primary"> COMPRAR </button>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template ngFor let-empleado [ngForOf] = "completar(i)">
+                  <div class="col">
+                      <div class="container gy-1" style="visibility: hidden;">
+                      </div>
+                  </div>
+              </ng-template>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-3 ">
+        <div class="container2">
+            <div class="row">
+                <div class="col" style="margin-left: 4%; margin-top: 5%;">
+                    <h2>Compras Recientes</h2>
+                    <ng-template ngFor let-compra let-i="index" [ngForOf] = "comprasRecientes" >
+                        <div class="col mb-4">
+                            <div class="container3 left">
+                                <div class="row" style="margin-left: 4%;">
+                                    {{i+1}}. {{compra.comercio}} <br>
+                                    Total: ₡{{compra.total}} <br>
+                                    Comentario: {{compra.feedback}}
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+         </div>
+  </div>

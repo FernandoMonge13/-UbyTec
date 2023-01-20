@@ -1,0 +1,43 @@
+<div class='box'>
+  <div class='wave -one'></div>
+  <div class='wave -two'></div>
+  <div class='wave -three'></div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class ="col" style= "align-items: center">
+          <div class="content" style="margin-left: 40%; margin-top: 30%;" >
+            <h2>UbyTEC</h2>
+            <h2>UbyTEC</h2>
+          </div>
+          <div class="content" style="margin-left: 15%; margin-top: 37.5%;" >
+            <h3>Administración</h3>
+          </div>
+        </div>
+        <div class ="col-4" >
+        <h2 class = "fw-bold text-center my-5">Login</h2>
+
+        <!---- LOGIN-->
+        <div class=" container-fluid py-2">
+            <form #form="ngForm" (ngSubmit)="onSubmit()" >
+                <div class="mb-4">
+                    <label for = "email" class="form-label">Identificación</label>
+                    <input type = "email" class="form-control" name = "email" [(ngModel)] = "id">
+                </div>
+                <div class="mb-4">
+                    <label for = "password" class="form-label">Contraseña</label>
+                    <input type = "password" class="form-control" name = "password" [(ngModel)] = "password">
+                </div>
+                <div class="row">
+                    <div class="col"><button type="submit" class="btn btn-outline-primary"> ENTRAR </button></div>
+                </div>
+                <div class = "row my-3">
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class = "col-1"></div>
+        </div>
+  </div>

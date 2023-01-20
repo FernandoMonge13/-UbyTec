@@ -1,0 +1,117 @@
+<div class="container-fluid">
+    <div class="row my-3">
+      
+      <div class="col-1">
+      </div>
+      <div class="col"> 
+        <div class="row my-3">  
+            <div class="col"><h2 class = "fw-bold offset-md-1">Información de Comercio</h2></div>
+            <div class="col"><h2 class = "fw-bold offset-md-1">Información de Administrador</h2></div>
+          
+        </div>
+        <form #form="ngForm" (ngSubmit)="onGuardar()">
+            <div class="row">
+  
+              <div class="col text-center">
+                <div class="row mt-4 right"><label for = "nombre" class="form-label">Nombre</label></div>
+                <div class="row mt-4 right"><label for = "correo" class="form-label">Correo</label></div>
+                <div class="row mt-4 right"><label for = "correo" class="form-label">Tipo</label></div>
+                <div class="row mt-4 right"><label for = "idComercio" class="form-label">ID Comercio</label></div>
+                <div class="row mt-4 right"><label for = "sinpe" class="form-label">Sinpe</label></div>
+                <div class="row mt-4 right"><label for = "provincia" class="form-label">Provincia</label></div>
+                <div class="row mt-4 right"><label for = "canton" class="form-label">Cantón</label></div>
+                <div class="row mt-4 right"><label for = "distrito" class="form-label">Distrito</label></div>
+             </div>
+              <div class="col">  
+                <div class="row mt-4"><input type = "text" class="form-control" name = "nombre" [(ngModel)] = "objeto.nombre" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "correo" [(ngModel)] = "objeto.correo" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "tipo" [(ngModel)] = "objeto.tipo" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "number" class="form-control" name = "idComercio" [(ngModel)] = "objeto.idComercio" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "number" class="form-control" name = "sinpe" [(ngModel)] = "objeto.sinpe" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "provincia" [(ngModel)] = "objeto.provincia" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "canton" [(ngModel)] = "objeto.canton" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "distrito" [(ngModel)] = "objeto.distrito" [disabled]= editMode></div>
+        
+              
+            </div>
+              <div class="col-1"></div>
+              
+              <div class="col text-center">
+                <div class="row mt-4 right"><label for = "nombreA" class="form-label">Nombre</label></div>
+                <div class="row mt-4 right"><label for = "apellidosA" class="form-label">Apellidos</label></div>
+                <div class="row mt-4 right"><label for = "correoA" class="form-label">Correo </label></div>
+                <div class="row mt-4 right"><label for = "usuarioA" class="form-label">Usuario</label></div>
+                <div class="row mt-4 right"><label for = "idAdmin" class="form-label">ID Admin</label></div>
+                <div class="row mt-4 right"><label for = "provinciaA" class="form-label">Provincia</label></div>
+                <div class="row mt-4 right"><label for = "cantonA" class="form-label">Cantón</label></div>
+                <div class="row mt-4 right"><label for = "distritoA" class="form-label">Distrito</label></div>  
+            </div>
+              <div class="col">
+                <div class="row mt-4"><input type = "text" class="form-control" name = "nombreA" [(ngModel)] = "adminComercio.nombre" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "apellidosA" [(ngModel)] = "adminComercio.apellidos" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "correoA" [(ngModel)] = "adminComercio.correo" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "usuarioA" [(ngModel)] = "adminComercio.usuario" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "number" class="form-control" name = "idAdmin" [(ngModel)] = "adminComercio.idAdmin" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "provinciaA" [(ngModel)] = "adminComercio.provincia" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "cantonA" [(ngModel)] = "adminComercio.canton" [disabled]= editMode></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "distritoA" [(ngModel)] = "adminComercio.distrito" [disabled]= editMode></div>
+
+              </div>
+  
+            </div>
+            <div *ngIf="editMode; else newMode">
+              <div class="row my-5">
+                <div class="col"></div>
+                
+                <div class="col text-center offset-md-1"> <button type="submit" class="btn btn-outline-primary"> Aceptar </button> </div>
+                <div class="col text-center"> <a role="button" type="button" class="btn can btn-primary" data-bs-toggle="modal" data-bs-target="#rechazar"> Eliminar </a></div>
+                <div class="col text-center"> <a role="button" type="button" (click) = onCancelar() class="btn can btn-primary"> Cancelar </a></div>
+                <div class="col"></div>
+              </div>                                                                      
+            </div>
+            
+            <ng-template #newMode>
+              <div class="row my-5">
+                <div class="col"></div>
+                <div class="col text-center offset-md-1"> <button type="submit" class="btn btn-outline-primary"> Añadir </button> </div>
+                <div class="col text-center"> <a role="button" type="button" (click) = onCancelar() class="btn can btn-primary"> Cancelar </a></div>
+                <div class="col"></div>
+              </div>
+            </ng-template>
+          </form>
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="rechazar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Solicitud Rechazada</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <label for="recipient-name" class="form-label">Comercio:</label>
+                <input type="text" class="form-control" id="recipient-name" [(ngModel)] = "objeto.nombre" disabled>
+                
+                <div class="col">
+                  
+                  <label for="recipient-name" class="form-label">Razon Descrita:</label>
+                  <textarea class="form-control" id="message"></textarea>
+                </div></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" (click) = onRechazar()>Rechazar Solicitud</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,61 @@
+<div class="container" style="margin-top: 4%;">
+    <div class="row my-3">
+      <div class="col-1">
+      </div>
+      <div  *ngIf="enCurso else noPedido" class="col">
+        <div class="row my-3">
+          <div class="col-2"></div>
+          <div class="col">
+            <div class="row"><h2 class = "fw-bold">Información de Pedido</h2></div>
+            <div class="row"><h2>Estado del pedido: {{objeto.finalizado}}</h2></div>
+            <div class="row"><h2>Orden No.: {{objeto.idPedido}}</h2></div>
+            <div class="row">
+              <h2>Repartidor: {{repartidor}}</h2></div>
+            <div class="row"><div class="col text-center"> <a role="button" type="button"  class="btn can btn-primary" data-bs-toggle="modal" data-bs-target="#completar"> Pedido Recibido </a></div></div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+      <ng-template #noPedido>
+        <div class="row my-3">
+          <div class="col-2"></div>
+          <div class="col">
+            <div class="row"><h2 class = "fw-bold">Ningún pedido en curso</h2></div>
+           </div>
+          <div class="col-2"></div>
+        </div>
+
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="modal fade" id="completar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">¿Qué te pareció tu pedido?</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <label for="recipient-name" class="form-label">Numero de Pedido:</label>
+                <input type="text" class="form-control" id="recipient-name" [(ngModel)] = "objeto.idPedido" disabled>
+                
+                <div class="col">
+                  
+                  <label for="recipient-name" class="form-label">Feedback:</label>
+                  <textarea class="form-control" id="message"></textarea>
+                </div></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" (click) = onFinalizarPedido()>Enviar Feedback</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

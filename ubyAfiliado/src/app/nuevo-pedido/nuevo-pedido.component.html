@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <div class="row my-3">
+
+      <div class="col-1">
+      </div>
+      <div class="col">
+        <div class="row my-3">
+          <h2 class = "fw-bold offset-md-1">Información de Pedido</h2>
+        </div>
+        <form #form="ngForm" (ngSubmit)="onEnviar()">
+            <div class="row">
+
+              <div class="col-2 text-center">
+                <div class="row mt-4 right"><label for = "cliente" class="form-label">ID Cliente</label></div>
+                <div class="row mt-4 right"><label for = "direccion" class="form-label">Dirección</label></div>
+                <div class="row mt-4 right"><label for = "cmoprobante" class="form-label">Comprobante de pago</label></div>
+                <div class="row mt-4 right"><label for = "servicio" class="form-label">Servicio</label></div>
+                <div class="row mt-4 right"><label for = "total" class="form-label">Total</label></div>
+
+            </div>
+              
+              <div class="col">
+                <div class="row mt-4"><input type = "text" class="form-control" name = "cliente" [(ngModel)] = "objeto.idCliente" disabled></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "direccion" [(ngModel)] = "objeto.direccion" disabled></div>
+                <div class="row mt-4"><input type = "text" class="form-control" name = "comprobante" [(ngModel)] = "objeto.idPedido" disabled></div>
+                <div class="row mt-4"><div class="input-group">
+                    <span class="input-group-text">₡</span>
+                    <input type="number" min="1" step="any" class="form-control" name = "servicio" [(ngModel)] = "totalServicio" disabled>
+                    <span class="input-group-text">0.00</span>
+                  </div></div>
+                  <div class="row mt-4"><div class="input-group">
+                    <span class="input-group-text">₡</span>
+                    <input type="number" min="1" step="any" class="form-control" name = "total" [(ngModel)] = "total" disabled>
+                    <span class="input-group-text">0.00</span>
+                  </div></div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col">
+                <div class="row my-4"></div>
+                <div class="row my-4">
+                    <h2>Lista de Productos</h2>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Producto</th>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                      </thead>
+          
+                      <tbody>
+                        <tr *ngFor="let producto of listaProductos">
+                          <td>{{producto.producto}}</td>
+                          <td>{{producto.cantidad}}</td>
+                          <td>{{producto.precio}}</td>
+                          <td>{{producto.precio * producto.cantidad}}</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th scope="col">Total</th>
+                          <td></td>
+                          <td></td>
+                          <td>{{total - totalServicio}}</td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                </div>
+              </div>
+
+            </div>
+              <div class="row my-5">
+                <div class="col"></div>
+
+                <div class="col text-center offset-md-1"> <button type="submit" class="btn btn-outline-primary"> Enviar Pedido </button> </div>
+                <div class="col text-center"> <a role="button" type="button" (click) = onCancelar() class="btn can btn-primary"> Cancelar </a></div>
+                <div class="col"></div>
+              </div>
+          </form>
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </div>
+

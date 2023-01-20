@@ -1,0 +1,20 @@
+<div class="container " *ngIf="logged">
+  <ul class="nav flex-column">
+
+    <li class="nav-item">
+      <a class = "tab"  routerLink="/{{id}}/gestion-perfil" routerLinkActive="tab-active">Mi Perfil</a>
+    </li>
+      <li class="nav-item">
+          <a class = "tab"  routerLink="{{id}}/gestion-productos" routerLinkActive="tab-active">Productos</a>
+      </li>
+      <li class="nav-item">
+          <a class = "tab"  routerLink="{{id}}/gestion-pedidos" routerLinkActive="tab-active">Pedidos</a>
+      </li>
+      <li class="nav-item">
+        <a class = "tab"  routerLink="{{id}}/solicitud" routerLinkActive="tab-active">Solicitud</a>
+      </li>
+      <li class="nav-item">
+        <a class = "tab" (click)="logout()" >Log Out</a>
+      </li>
+    </ul>
+  </div>

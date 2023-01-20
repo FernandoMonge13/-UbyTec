@@ -1,0 +1,127 @@
+<div id="carouselExampleDark" class="carousel slide carousel-dark sombra" data-interval="false" >
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <div class="row align-items-start">
+          <div class="col-sm-1">
+          </div>
+          <div class="col">
+            <div class="centered-text mt-4">
+              <h2>UbyTec</h2>
+              <h2>Reporte Consolidado de Ventas</h2>
+              <div *ngFor="let cliente of listaclientes">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Cliente:</th>
+                      <td>{{cliente.cliente}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Afiliado</th>
+                      <th scope="col">Compras</th>
+                      <th scope="col">Conductor</th>
+                      <th scope="col">Monto Total</th>
+                      <th scope="col">Monto Servicio</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let venta of cliente.detalles">
+                      <td>{{venta.afiliado}}</td>
+                      <td>{{venta.compras}}</td>
+                      <td>{{venta.repartidor}}</td>
+                      <td>{{venta.monto_total}}</td>
+                      <td>{{venta.monto_servicio}}</td>
+                    <tr>
+                      <th scope="col">Total</th>
+                      <td>{{cliente.totalcomprasT}}</td>
+                      <td>
+                      </td>
+                      <td>{{cliente.MontoTotalT}}</td>
+                      <td>{{cliente.MontoServicioT}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+          </div>
+          <div class="col-sm-1">
+          </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+      <div class="row align-items-start">
+        <div class="col-sm-1">
+        </div>
+        <div class="col">
+          <div class="centered-text mt-4">
+        <h2>UbyTec</h2>
+        <h2>Reporte Ventas por Afiliado</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Afiliado</th>
+                <th scope="col">Compras</th>
+                <th scope="col">Monto Total</th>
+                <th scope="col">Monto Servicio</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let reporte of reporte2">
+                <td>{{reporte.afiliado}}</td>
+                <td>{{reporte.compras}}</td>
+                <td>{{reporte.monto_total}}</td>
+                <td>{{reporte.monto_servicio}}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="col">Total</th>
+                <td>{{totalcomprasS}}</td>
+                <td>{{MontoTotalS}}</td>
+                <td>{{MontoServicioS}}</td>
+              </tr>
+            </tfoot>
+          </table>
+        <div class="col-sm-1">
+        </div>
+      </div>
+        </div>
+    </div>
+  </div>
+
+    <div class="carousel-item">
+      <div class="row align-items-start">
+        <div class="col-sm-1">
+        </div>
+        <div class="col">
+          <div class="centered-text mt-4">
+        <h2>UbyTec</h2>
+        <h2>Reporte Solicitudes de Afiliados</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Afiliado</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let report of reporte3">
+              <td>{{report.nombre}}</td>
+              <td>{{report.solicitud}}</td>
+            </tr>
+          </tbody>
+          </table>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

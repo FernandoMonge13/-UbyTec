@@ -1,0 +1,122 @@
+<div class='box'>
+  <div class='wave -one'></div>
+  <div class='wave -two'></div>
+  <div class='wave -three'></div>
+</div>
+<div class="container py-5">
+    <div class="row">
+        <div class ="col" style= "align-items: center">
+            <div class="content" style="margin-left: 40%; margin-top: 30%;" >
+              <h2>UbyTEC</h2>
+              <h2>UbyTEC</h2>
+            </div>
+            <div class="content" style="margin-left: 30%; margin-top: 37.5%;" >
+              <h3>Cliente</h3>
+            </div>
+        </div>
+        <div class ="col-4">
+        <h2 class = "fw-bold text-center my-5">Login</h2>
+
+        <!---- LOGIN-->
+        <div class="container-fluid py-2">
+            <form #form="ngForm" (ngSubmit)="onSubmit()" >
+                <div class="mb-4">
+                    <label for = "email" class="form-label">Identificación</label>
+                    <input type = "email" class="form-control" name = "email" [(ngModel)] = "idCliente">
+                </div>
+                <div class="mb-4">
+                    <label for = "password" class="form-label">Contraseña</label>
+                    <input type = "password" class="form-control" name = "password" [(ngModel)] = "pass">
+                </div>
+                <div class="row">
+                    <div class="col"><button type="submit" class="btn btn-outline-primary"> ENTRAR </button></div>
+                    <div class="col"><a type="button" class="btn btn-outline-primary" (click) = "getProvincia()" data-bs-toggle="modal" data-bs-target="#crearCuenta"> Crear Cuenta </a></div>
+                    <!-- <div class="col"><button (click)=prueba() style= "width: 100%;" >Añadir Dirección</button></div> -->
+                  </div>
+                <div class = "row my-3">
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class = "col-1"></div>
+        </div>
+  </div>
+
+
+  <div class="modal fade" id="crearCuenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Crear Cuenta</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mx-3">
+
+          <div class="container-fluid">
+            <div class="row my-3">
+
+              <div class="col-1">
+              </div>
+              <div class="col">
+                <form #form="ngForm" (ngSubmit)="onGuardar()">
+                    <div class="row">
+
+                      <div class="col text-center">
+                        <div class="row mt-4 right"><label for = "nombre" class="form-label">Nombre</label></div>
+                        <div class="row mt-4 right"><label for = "apellidos" class="form-label">Apellidos</label></div>
+                        <div class="row mt-4 right"><label for = "fechaNac" class="form-label">Fecha Nacaimiento</label></div>
+
+                        <div class="row mt-4 right"><label for = "provincia" class="form-label">Provincia</label></div>
+                        <div class="row mt-4 right"><label for = "canton" class="form-label">Cantón</label></div>
+                        <div class="row mt-4 right"><label for = "distrito" class="form-label">Distrito</label></div>
+
+                        <div class="row mt-4 right"><label for = "cedula" class="form-label">Cédula</label></div>
+                        <div class="row mt-4 right"><label for = "usuario" class="form-label">Usuario</label></div>
+                        <div class="row mt-4 right"><label for = "pass" class="form-label">Contraseña</label></div>
+                      </div>
+                      <div class="col">
+                        <div class="row mt-4"><input type = "text" class="form-control" name = "nombre" [(ngModel)] = "objeto.nombre" ></div>
+                        <div class="row mt-4"><input type = "text" class="form-control" name = "apellidos" [(ngModel)] = "objeto.apellidos" ></div>
+                        <div class="row mt-4"><input type = "date" class="form-control" name = "fechaNac" [(ngModel)] = "objeto.fechaNac" ></div>
+
+
+                        <div class="row mt-4">
+                          <select class="form-select" id="provincia" [(ngModel)]="objeto.provincia" name="provincia" (click)="selected()">
+                            <!--<option *ngFor="let provincia of provincias" [value]="provincia" >{{provincia}}</option>-->
+                            <ng-template ngFor let-provincia [ngForOf] = "provincias"; let-i="index">
+                              <option [value] ="provincia">{{provincia}}</option>
+                            </ng-template>
+                          </select>
+                        </div>
+                        <div class="row mt-4">
+                          <select class="form-select" id="canton" name="canton" [(ngModel)]="objeto.canton" name="canton" (click)="selectedcant()">
+                            <option *ngFor="let canton of cantones"  [value]="canton" name="Canton">{{canton}}</option>
+                          </select>
+                        </div>
+                        <div class="row mt-4">
+                          <select class="form-select" name="distrito" [(ngModel)]="objeto.distrito" name="distrito">
+                            <option *ngFor="let distrito of distritos" [value]="distrito" name="Distrito">{{distrito}}</option>
+                          </select>
+                        </div>
+
+                        <div class="row mt-4"><input type = "number" class="form-control" name = "cedula" [(ngModel)] = "objeto.idCliente"></div>
+                        <div class="row mt-4"><input type = "text" class="form-control" name = "usuario" [(ngModel)] = "objeto.usuario"></div>
+                        <div class="row mt-4"><input type = "text" class="form-control" name = "pass" [(ngModel)] = "objeto.pass" ></div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+              <div class="col-1"></div>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" (click) = onGuardar()>Crear Cuenta</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

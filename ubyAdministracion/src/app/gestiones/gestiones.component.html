@@ -1,0 +1,34 @@
+
+        <!-- Gestion de Administradores/Empleados-->
+
+        <div class="row">
+        <div class="col-1"> </div>
+        <div class="col">
+          <div class="row mt-3" *ngIf = crear >
+              <a class="btn btn-primary" style= "width: 100%; font-size:x-large;" href="/nuevo/{{Tipo}}" role="button">Añadir Nuevo {{Tipo}}</a>
+          </div>
+          <div *ngFor="let n of lista; let i=index">
+            <div *ngIf="crearFila(i)">
+                <div class="row mt-4">
+                    <ng-template ngFor let-Objeto [ngForOf] = "subLista(i)">
+                        <div class="col">
+                            <div class="container gy-1">
+                                {{Tipo}}
+                                <div class="row m t-1"><h2>{{Objeto.nombre}}</h2></div>
+                                <button type="submit" [routerLink]="['/actualizar',Tipo,Objeto.id]" class="btn btn-outline-primary"> EDITAR </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template ngFor let-empleado [ngForOf] = "completar(i)">
+                      <div class="col">
+                          <div class="container gy-1" style="visibility: hidden;">
+                          </div>
+                      </div>
+                  </ng-template>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-1"> </div>
+      </div>
+
